@@ -4,6 +4,7 @@ pipeline {
     tools {
         // Install the Maven version configured as "M3" and add it to the path.
         maven "maven-3.x"
+		docker "Docker"
     }
 	
 	environment {
@@ -33,10 +34,6 @@ pipeline {
                 }
             }
         }
-		stage('Initializing Docker Client'){
-			def dockerHome = tool 'Docker'
-			env.PATH = "${dockerHome}/bin:${env.PATH}"
-		}
 		stage('Building image') {
 			steps{
 				script {
