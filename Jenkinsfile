@@ -7,7 +7,7 @@ pipeline {
     }
 	
 	environment {
-		registry = "https://hub.docker.com/repository/docker/karthikdev0312/microservices"
+		registry = "karthikdev0312/microservices"
 		registryCredential = 'dockerhub'
 	}	
 
