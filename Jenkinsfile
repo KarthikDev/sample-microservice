@@ -28,12 +28,13 @@ pipeline {
                 }
             }
         }
-    }
-	stage('Building image') {
-		steps{
-			script {
+		stage('Building image') {
+			steps{
+				script {
 					docker.build registry + ":$BUILD_NUMBER"
+				}
 			}
 		}
-	}
+    }
+
 }
