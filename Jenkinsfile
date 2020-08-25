@@ -5,6 +5,11 @@ pipeline {
         // Install the Maven version configured as "M3" and add it to the path.
         maven "maven-3.x"
     }
+	
+	environment {
+		registry = "https://hub.docker.com/repository/docker/karthikdev0312/microservices"
+		registryCredential = 'dockerhub'
+	}	
 
     stages {
         stage('Preparing Package') {
