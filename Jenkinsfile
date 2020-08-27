@@ -7,8 +7,9 @@ pipeline {
     }
 	
 	environment {
-		registry = "karthikdev0312/microservices"
+		registry = "karthikdev0312/springboot-service"
 		registryCredential = 'dockerhub'
+		dockerImage = ''
 	}	
 
     stages {
@@ -36,10 +37,15 @@ pipeline {
 		stage('Building image') {
 			steps{
 				script {
-					docker.build registry + ":$BUILD_NUMBER"
+					dockerImage = docker.build registry + ":$BUILD_NUMBER"
 				}
 			}
 		}
+		stage('Push image') {        
+        docker.withRegistry( '', registryCredential ) {
+            dockerImage.push()
+          }
+    }
     }
 
 }
