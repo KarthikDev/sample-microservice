@@ -41,11 +41,16 @@ pipeline {
 				}
 			}
 		}
-		stage('Push image') {        
-        docker.withRegistry( '', registryCredential ) {
-            dockerImage.push()
-          }
-    }
+		stage('Push image') {   
+			steps{	
+				script{	
+					docker.withRegistry( '', registryCredential ) {
+					dockerImage.push()
+					}
+		  
+				}
+		}
     }
 
+}
 }
