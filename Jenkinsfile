@@ -56,7 +56,7 @@ pipeline {
 		}	
 		stage('Deploy to GKE') {
             steps{
-                sh "sed -i 's/dockerImage/g' deployment.yml"
+                sh "sed -i dockerImage deployment.yml"
                 step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'deployment.yml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
             }
         }
