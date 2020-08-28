@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springboot-service
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: springboot-service
+    spec:
+      containers:
+        - name: springboot-service
+          image: 'docker.io/karthikdev0312/springboot-service:10'
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: springboot-service
+  labels:
+    name: springboot-service
+spec:
+  ports:
+    - port: 80
+      targetPort: 8080
+      protocol: TCP
+  selector:
+    app: springboot-service
+  type: ClusterIP

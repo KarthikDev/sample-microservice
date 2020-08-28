@@ -10,6 +10,10 @@ pipeline {
 		registry = "karthikdev0312/springboot-service"
 		registryCredential = 'dockerhub'
 		dockerImage = ''
+		PROJECT_ID = 'On-Prem-Devops'
+        CLUSTER_NAME = 'karthikdev0312-cluster-1'
+        LOCATION = 'europe-west1-b'
+        CREDENTIALS_ID = 'On-Prem-Devops'
 	}	
 
     stages {
@@ -50,6 +54,12 @@ pipeline {
 				}
 			}
 		}	
+		stage('Deploy to GKE') {
+            steps{
+                sh "sed -i 's/dockerImage/g' deployment.yml"
+                step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'deployment.yml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
+            }
+        }
 
 	}
 }
