@@ -1,33 +1,34 @@
-apiVersion: apps/v1
+apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: springboot-service
+  name: sample-microservice
 spec:
-  replicas: 2
+  replicas: 3
   template:
     metadata:
       labels:
-        app: springboot-service
+        app: sample-microservice
     spec:
       containers:
-        - name: springboot-service
-          image: 'docker.io/karthikdev0312/springboot-service:10'
-          imagePullPolicy: Always
+        - name: sample-microservice
+          image: 'gcr.io/resonant-augury-288013/sample-microservice:25'
           ports:
             - containerPort: 8080
+          args:
+            - 'image-pull-policy: Always'
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: springboot-service
+  name: sample-microservice-service
   labels:
-    name: springboot-service
+    name: sample-microservice-service
 spec:
   ports:
     - port: 80
-      targetPort: 8080
+      targetPort: 80
       protocol: TCP
   selector:
-    app: springboot-service
-  type: ClusterIP
+    app: sample-microservice
+  type: LoadBalancer
