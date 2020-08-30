@@ -48,7 +48,7 @@ pipeline {
 		stage('Push image') {   
 			steps{	
 				script{	
-					docker.withRegistry( '', gcr:registryCredential ) {
+					docker.withRegistry('https://gcr.io', 'gcr:gcr-cred') {
 					dockerImage.push()
 					}		  
 				}
