@@ -7,7 +7,7 @@ pipeline {
     }
 	
 	environment {
-		registry = "my-project-1/sample-microservice"
+		registry = "resonant-augury-288013/sample-microservice"
 		registryCredential = 'gcr-cred'
 		dockerImage = ''
 		PROJECT_ID = 'my-project-1'
