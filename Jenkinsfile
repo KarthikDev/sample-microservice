@@ -7,7 +7,7 @@ pipeline {
     }
 	
 	environment {
-		registry = "gcr.io/my-project-1"
+		registry = "gcr.io/my-project-1/sample-microservice"
 		registryCredential = 'gcr-cred'
 		dockerImage = ''
 		PROJECT_ID = 'my-project-1'
