@@ -7,7 +7,7 @@ pipeline {
     }
 	
 	environment {
-		registry = "gcr.io/karthikdev0312/springboot-service"
+		registry = "gcr.io/On-Prem-Devops"
 		registryCredential = 'On-Prem-Devops'
 		dockerImage = ''
 		PROJECT_ID = 'On-Prem-Devops'
@@ -48,7 +48,7 @@ pipeline {
 		stage('Push image') {   
 			steps{	
 				script{	
-					docker.withRegistry( '', registryCredential ) {
+					docker.withRegistry( env.registry, gcr:env.registryCredential ) {
 					dockerImage.push()
 					}		  
 				}
