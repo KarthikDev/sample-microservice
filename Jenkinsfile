@@ -10,7 +10,7 @@ pipeline {
 		registry = "resonant-augury-288013/sample-microservice"
 		registryCredential = 'gcr-cred'
 		dockerImage = ''
-		PROJECT_ID = 'my-project-1'
+		PROJECT_ID = 'resonant-augury-288013'
         CLUSTER_NAME = 'my-cluster-1'
         LOCATION = 'europe-west1-b'
         CREDENTIALS_ID = 'gcr-cred'
@@ -51,12 +51,20 @@ pipeline {
 				}
 			}
 		}	
-		/*stage('Deploy to GKE') {
+		stage('Deploy to GKE') {
             steps{
-                sh "sed -i dockerImage deployment.yml"
-                step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'deployment.yml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
+                //sh "sed -i dockerImage deployment.yml"
+                //step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'deployment.yml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
+				step([
+                $class: 'KubernetesEngineBuilder',
+                projectId: env.PROJECT_ID,
+                clusterName: env.CLUSTER_NAME,
+                location: env.LOCATION,
+                manifestPattern: 'deployment.yml',
+                credentialsId: env.CREDENTIALS_ID,
+                verifyDeployments: true])
             }
-        }*/
+        }
 
 	}
 }
