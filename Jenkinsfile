@@ -7,7 +7,7 @@ pipeline {
     }
 	
 	environment {
-		registry = "gcr.io/my-project-1/"
+		registry = "my-project-1/sample-microservice"
 		registryCredential = 'gcr-cred'
 		dockerImage = ''
 		PROJECT_ID = 'my-project-1'
@@ -24,9 +24,6 @@ pipeline {
 
                 // Run Maven on a Unix agent.
                 sh "mvn -Dmaven.test.failure.ignore=true clean package"
-
-                // To run Maven on a Windows agent, use
-                // bat "mvn -Dmaven.test.failure.ignore=true clean package"
             }
 
             post {
@@ -45,7 +42,7 @@ pipeline {
 				}
 			}
 		}
-		stage('Push image') {   
+		stage('Push image to GCR') {   
 			steps{	
 				script{	
 					docker.withRegistry('https://gcr.io', 'gcr:gcr-cred') {
