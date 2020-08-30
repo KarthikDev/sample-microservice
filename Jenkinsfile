@@ -7,13 +7,13 @@ pipeline {
     }
 	
 	environment {
-		registry = "gcr.io/my-project-1"
-		registryCredential = 'On-Prem-Devops'
+		registry = "gcr.io/my-project-1/sample-microservice"
+		registryCredential = 'gcr-cred'
 		dockerImage = ''
 		PROJECT_ID = 'my-project-1'
         CLUSTER_NAME = 'my-cluster-1'
         LOCATION = 'europe-west1-b'
-        CREDENTIALS_ID = 'On-Prem-Devops'
+        CREDENTIALS_ID = 'gcr-cred'
 	}	
 
     stages {
