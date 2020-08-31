@@ -49,8 +49,7 @@ pipeline {
 					}		  
 				}
 			}
-		}	
-		
+		}			
 		stage('Deploy to GKE') {
             steps{                
                 step([
