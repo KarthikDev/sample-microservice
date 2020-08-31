@@ -8,7 +8,6 @@ pipeline {
 	
 	environment {
 		registry = "resonant-augury-288013/sample-microservice"
-		registryCredential = 'gcr-cred'
 		dockerImage = ''
 		PROJECT_ID = 'resonant-augury-288013'
         CLUSTER_NAME = 'my-cluster-1'
