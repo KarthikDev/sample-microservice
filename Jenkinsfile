@@ -20,7 +20,7 @@ pipeline {
             steps {                
                 git credentialsId: 'KarthikDev-Github', url: 'https://github.com/KarthikDev/sample-microservice.git'
 
-                // Run Maven on a Unix agent.
+                // Run Maven on a Unix agent
                 sh "mvn -Dmaven.test.failure.ignore=true clean package"
             }
 
