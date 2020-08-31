@@ -17,8 +17,7 @@ pipeline {
 
     stages {
         stage('Preparing Package') {
-            steps {
-                // Get some code from a GitHub repository
+            steps {                
                 git credentialsId: 'KarthikDev-Github', url: 'https://github.com/KarthikDev/sample-microservice.git'
 
                 // Run Maven on a Unix agent.
