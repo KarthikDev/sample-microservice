@@ -7,7 +7,7 @@ pipeline {
     }
 	
 	environment {
-		registry = "https://gcr.io/resonant-augury-288013/sample-microservice"
+		registry = "gcr.io/resonant-augury-288013/sample-microservice"
 		dockerImage = ''
 		PROJECT_ID = 'resonant-augury-288013'
         CLUSTER_NAME = 'my-cluster-1'
@@ -18,7 +18,7 @@ pipeline {
     stages {
         stage('Preparing Package') {
             steps {                
-                git credentialsId: 'KarthikDev-Github', url: 'https://github.com/KarthikDev/sample-microservice.git'
+                git credentialsId: 'Github-KarthikDev', url: 'https://github.com/KarthikDev/sample-microservice.git'
                 // Run Maven on a Unix agent
                 sh "mvn -Dmaven.test.failure.ignore=true clean package"
             }
