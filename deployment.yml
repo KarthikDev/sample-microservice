@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: sample-microservice-19
+  name: sample-microservice
 spec:
   replicas: 3
   template:
@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
         - name: sample-microservice
-          image: gcr.io/resonant-augury-288013/sample-microservice:19
+          image: gcr.io/resonant-augury-288013/sample-microservice:20
           ports:
             - containerPort: 8080
           args:
@@ -30,5 +30,5 @@ spec:
       targetPort: 8080
       protocol: TCP
   selector:
-    app: sample-microservice-19
+    app: sample-microservice
   type: LoadBalancer
