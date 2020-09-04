@@ -10,7 +10,7 @@ public class GreetingController {
 	@GetMapping(value = "/{name}")
 	public String sayHello(@PathVariable String name) {
 		
-		return "Hello "+name+"! Have fun. Its Weekend";
+		return "Hello "+name+"! Have fun. Buddy!! Its Weekend";
 	}
 	
 }

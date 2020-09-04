@@ -1,17 +1,17 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: sample-microservice
+  name: sample-microservice-v22
 spec:
   replicas: 3
   template:
     metadata:
       labels:
-        app: sample-microservice
+        app: sample-microservice-v22
     spec:
       containers:
         - name: sample-microservice
-          image: gcr.io/resonant-augury-288013/sample-microservice:20
+          image: gcr.io/resonant-augury-288013/sample-microservice:22
           ports:
             - containerPort: 8080
           args:
