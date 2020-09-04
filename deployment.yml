@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
         - name: sample-microservice
-          image: 'gcr.io/resonant-augury-288013/sample-microservice:25'
+          image: 'gcr.io/resonant-augury-288013/sample-microservice:$BUILD_NUMBER'
           ports:
             - containerPort: 8080
           args:
@@ -27,7 +27,7 @@ metadata:
 spec:
   ports:
     - port: 80
-      targetPort: 80
+      targetPort: 8080
       protocol: TCP
   selector:
     app: sample-microservice
